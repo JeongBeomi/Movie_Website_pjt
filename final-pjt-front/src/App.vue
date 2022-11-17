@@ -5,7 +5,7 @@
         <b-col cols="2">
           logo
           <nav>
-            <router-link to="/" @mouseover="menuMouse" :class="textpopup">Home</router-link> 
+            <router-link to="/">Home</router-link> 
             <hr>
             <router-link to="/login">Login</router-link> 
             <hr>
@@ -23,21 +23,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      textpopup: null,
-    }
-  },
-  methods: {
-    menuMouse() {
-      this.textpopup = "text-pop-up-top "
-    }
-  }
-}
-</script>
-
 
 <style>
 #app {
@@ -46,19 +31,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 @keyframes text-pop-up-top {
@@ -78,8 +50,20 @@ nav a.router-link-exact-active {
   }
 }
 
-.text-pop-up-top {
-	-webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+nav {
+  padding: 30px;
+  animation: text-pop-up-top 0.5s cubic-bezier;
 }
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+
+
 </style>

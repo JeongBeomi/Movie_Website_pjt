@@ -3,7 +3,7 @@
     <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="4000"
+      :interval="3000"
       controls
       indicators
       background="#ababab"
@@ -13,21 +13,38 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <MovieFavoriteItem
-
-      />
+      <MoviePostersItem 
+      v-for="movie in movies" 
+      :key="movie.id"
+      :movie = "movie"
+    />
     </b-carousel>
   </div>
 </template>
 
 <script>
-import MovieFavoriteItem from '@/components/MovieFavoriteItem'
+import MoviePostersItem from '@/components/MoviePostersItem'
 
 export default {
   name: 'MoviePosters',
   components: {
-    MovieFavoriteItem,
+    MoviePostersItem,
   },
+  data() {
+    return {
+      movies: this.$store.state.allMovieList,
+      slide: 0,
+      sliding: null,
+    }
+  },
+  methods: {
+    onSlideStart() {
+        this.sliding = true
+    },
+    onSlideEnd() {
+      this.sliding = false
+    },
+  }
 }
 </script>
 
