@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'community',
 
     'rest_framework',
-
+    # CORS Policy
+    'corsheaders',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # CORS
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,3 +136,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'accounts.User'
+
+# 허용할 Origin
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+]
+# 모든 Origin 허용
+# CORS_ALLOWED_ALL_ORIGINS = True
