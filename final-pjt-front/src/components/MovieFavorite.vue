@@ -6,7 +6,7 @@
 export default {
   name: 'MovieFavorite',
   components: {
-
+    
   },
 }
 </script>

@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="movieMenu">
-      <b-button>최신순</b-button>
-      <b-button>평점순</b-button>
-      <b-button>인기순</b-button>
+      <b-button @click="orderedBy($event)" value="release_date">최신순</b-button>
+      <b-button @click="orderedBy($event)" value="vote_average">평점순</b-button>
+      <b-button @click="orderedBy($event)" value="popularity">인기순</b-button>
       <b-dropdown class="mx-0" right text="Genre">
-        <b-dropdown-item @click="clickedGenre($event)" value="action">action</b-dropdown-item>
-        <b-dropdown-item @click="clickedGenre($event)" value="romance">romance</b-dropdown-item>
-        <b-dropdown-item @click="clickedGenre($event)" value="drama">drama</b-dropdown-item>
+        <b-dropdown-item @click="clickedGenre($event)" id="28">action</b-dropdown-item>
+        <b-dropdown-item @click="clickedGenre($event)" id="12">adventure</b-dropdown-item>
+        <b-dropdown-item @click="clickedGenre($event)" id="16">animation</b-dropdown-item>
       </b-dropdown>
     </div>
     
@@ -29,9 +29,9 @@ export default {
   components: {
     MovieCategoriesItem,
   },
-  data() {
-    return {
-      movies: this.$store.state.allMovieList,
+  computed: {
+    movies() {
+      return this.$store.state.allMovieList
     }
   },
   methods: {
@@ -39,10 +39,13 @@ export default {
       this.$store.dispatch("getGenreMovies", genre)
     },
     clickedGenre(event) {
-      this.getGenreMovies(event.target.textContent)
+      this.getGenreMovies(event.target.id)
+    },
+    orderedBy(event) {
+      this.$store.dispatch("orderedBy", event.target.value)
     }
   },
-  create() {
+  created() {
 
   }
 }

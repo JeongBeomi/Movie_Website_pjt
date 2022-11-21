@@ -3,16 +3,18 @@
     <b-container class="m-5 p-0">
       <b-row>
         <b-col cols="2">
-          logo
-          <nav>
-            <router-link to="/">Home</router-link> 
-            <hr>
-            <router-link to="/login">Login</router-link> 
-            <hr>
-            <router-link to="/signup">Signup</router-link> 
-            <hr>
-            <router-link to="/community">Community</router-link> 
-         </nav>
+          <header>
+            logo
+            <nav>
+              <router-link to="/">Home</router-link> 
+              <hr>
+              <router-link to="/login">Login</router-link> 
+              <hr>
+              <router-link to="/signup">Signup</router-link> 
+              <hr>
+              <router-link to="/community">Community</router-link> 
+            </nav>
+          </header>
         </b-col>
         <b-col cols="10">
           <router-view/>  
@@ -64,6 +66,36 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
+.css-5brfx4 {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 51;
+  background: transparent;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  width: 100%;
+  height: 62px;
+  transition: background-color 200ms ease 0s;
+}
 
+
+.css-6k8tqb {
+  display:none;
+  position:fixed;
+  top:0px;
+  left:0;
+  z-index:51;
+  background:#fff;
+  color:#fff;
+  text-align:center;
+  width:100%;
+  height:62px;
+  box-shadow:0 1px 0 0 rgba(0,0,0,0.08);
+  -webkit-transition:background-color 200ms;
+  transition:background-color 200ms;
+  }
+  /* @media (min-width:720px){.css-6k8tqb{display:block;}} */
 
 </style>
