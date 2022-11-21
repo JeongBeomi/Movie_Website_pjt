@@ -1,17 +1,34 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '@/router'
+import createPersistedState from 'vuex-persistedstate'
+
 
 Vue.use(Vuex)
 
+const Django_URL = 'http://127.0.0.1:8000'
+
 export default new Vuex.Store({
+  plugins: [
+    createPersistedState()
+  ],
+
   state: {
     allMovieList: null,
+    token: null,
   },
   getters: {
-    
+    isLogin(state) {
+      return state.token ? true : false
+    }
   },
   mutations: {
+    SAVE_TOKEN(state, token) {
+      state.token = token
+      router.push({ name: 'home' })
+    },
+
     GET_MOVIES(state, movies) {
       state.allMovieList = movies
     },
@@ -20,6 +37,39 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    signUp(context, payload) {
+      axios({
+        method: 'post',
+        url: `${Django_URL}/accounts/signup/`,
+        data: {
+          username: payload.username,
+          password1: payload.password1,
+          password2: payload.password2,
+        }
+      })
+        .then((res) => {
+          // console.log(res)
+          console.log("gd")
+          context.commit('SAVE_TOKEN', res.data.key)
+        })
+    },
+
+    logIn(context, payload) {
+      axios({
+        method: 'post',
+        url: `${Django_URL}/accounts/login/`,
+        data: {
+          username: payload.username,
+          password: payload.password,
+        }
+      })
+        .then((res) => {
+          // console.log(res)
+          context.commit('SAVE_TOKEN', res.data.key)
+        })
+    },
+
+
     getMovies(context) {
       const API_URL = "http://127.0.0.1:8000/movies/order/release_date/"
 
