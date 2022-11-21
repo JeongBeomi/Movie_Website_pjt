@@ -5,65 +5,64 @@
     <div class="card-body">
       <h2 class="card-title">{{ movie.title }}</h2>
        <p class="card-text">{{ movie.overview }}</p> -->
-    <!-- </div>
+  <!-- </div>
     <hr>
   </div>
   </div> -->
 
   <div class="container" @click="toMovieDetail(movie.id)">
-  <div class="card">
-    <div class="imgBx">
-      <img :src="'http://image.tmdb.org/t/p/w500/'+ movie.poster_path">
-    </div>
-    <div class="contentBx">
-      <h2>{{ movie.title }}</h2>
-      <div class="size">
-        <h3>평점 : </h3>
-        <span>{{ vote_average }}</span>
+    <div class="card mx-auto">
+      <div class="imgBx">
+        <img :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" />
       </div>
-      <div class="size">
-        <h3>평점 : </h3>
-        <span>{{ vote_average }}</span>
-      </div>
-      <div class="size">
-        <h3>평점 : </h3>
-        <span>{{ vote_average }}</span>
-      </div>
-      <!-- <div class="color">
+      <div class="contentBx">
+        <h2>{{ movie.title }}</h2>
+        <div class="size">
+          <h3>평점 :</h3>
+          <span>{{ movie.vote_average }}</span>
+        </div>
+        <div class="size">
+          <h3>평점 :</h3>
+          <span>{{ movie.vote_average }}</span>
+        </div>
+        <div class="size">
+          <h3>평점 :</h3>
+          <span>{{ movie.vote_average }}</span>
+        </div>
+        <!-- <div class="color">
         <h3>Color :</h3>
         <span></span>
         <span></span>
         <span></span>
       </div> -->
-      <!-- <a href="#">Buy Now</a> -->
+        <!-- <a href="#">Buy Now</a> -->
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  name: 'MovieCategoriesItem',
+  name: "MovieCategoriesItem",
   props: {
     movie: Object,
   },
   methods: {
     toMovieDetail(movie_id) {
-      this.$router.push({ name: "movieDetail", params: { id: movie_id }})
-    }
-  }
-}
+      this.$router.push({ name: "movieDetail", params: { id: movie_id } });
+    },
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,11 +70,11 @@ body{
   background: #131313;
 }
 
-.container{
+.container {
   position: relative;
 }
 
-.container .card{
+.container .card {
   position: relative;
   width: 320px;
   height: 450px;
@@ -84,8 +83,8 @@ body{
   overflow: hidden;
 }
 
-.container .card:before{
-  content: '';
+.container .card:before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -96,22 +95,22 @@ body{
   transition: 0.5s ease-in-out;
 }
 
-.container .card:hover:before{
+.container .card:hover:before {
   clip-path: circle(300px at 80% -20%);
 }
 
-.container .card:after{
-  content: 'Nike';
+.container .card:after {
+  content: "Nike";
   position: absolute;
   top: 30%;
   left: -20%;
   font-size: 12em;
   font-weight: 800;
   font-style: italic;
-  color: rgba(255,255,25,0.05)
+  color: rgba(255, 255, 25, 0.05);
 }
 
-.container .card .imgBx{
+.container .card .imgBx {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -121,13 +120,12 @@ body{
   transition: 0.5s;
 }
 
-.container .card:hover .imgBx{
+.container .card:hover .imgBx {
   top: 0%;
   transform: translateY(0%);
-    
 }
 
-.container .card .imgBx img{
+.container .card .imgBx img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -135,7 +133,7 @@ body{
   width: 270px;
 }
 
-.container .card .contentBx{
+.container .card .contentBx {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -145,11 +143,11 @@ body{
   z-index: 10;
 }
 
-.container .card:hover .contentBx{
+.container .card:hover .contentBx {
   height: 210px;
 }
 
-.container .card .contentBx h2{
+.container .card .contentBx h2 {
   position: relative;
   font-weight: 600;
   letter-spacing: 1px;
@@ -157,30 +155,33 @@ body{
   margin: 0;
 }
 
-.container .card .contentBx .size, .container .card .contentBx .color {
+.container .card .contentBx .size,
+.container .card .contentBx .color {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px 20px;
-  transition: 0.5s;opacity: 0;
+  transition: 0.5s;
+  opacity: 0;
   visibility: hidden;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.container .card:hover .contentBx .size{
+.container .card:hover .contentBx .size {
   opacity: 1;
   visibility: visible;
   transition-delay: 0.5s;
 }
 
-.container .card:hover .contentBx .color{
+.container .card:hover .contentBx .color {
   opacity: 1;
   visibility: visible;
   transition-delay: 0.6s;
 }
 
-.container .card .contentBx .size h3, .container .card .contentBx .color h3{
+.container .card .contentBx .size h3,
+.container .card .contentBx .color h3 {
   color: #fff;
   font-weight: 300;
   font-size: 14px;
@@ -189,7 +190,7 @@ body{
   margin-right: 10px;
 }
 
-.container .card .contentBx .size span{
+.container .card .contentBx .size span {
   width: 26px;
   height: 26px;
   text-align: center;
@@ -205,11 +206,11 @@ body{
   cursor: pointer;
 }
 
-.container .card .contentBx .size span:hover{
+.container .card .contentBx .size span:hover {
   background: #9bdc28;
 }
 
-.container .card .contentBx .color span{
+.container .card .contentBx .color span {
   width: 20px;
   height: 20px;
   background: #ff0;
@@ -218,19 +219,19 @@ body{
   cursor: pointer;
 }
 
-.container .card .contentBx .color span:nth-child(2){
+.container .card .contentBx .color span:nth-child(2) {
   background: #9bdc28;
 }
 
-.container .card .contentBx .color span:nth-child(3){
+.container .card .contentBx .color span:nth-child(3) {
   background: #03a9f4;
 }
 
-.container .card .contentBx .color span:nth-child(4){
+.container .card .contentBx .color span:nth-child(4) {
   background: #e91e63;
 }
 
-.container .card .contentBx a{
+.container .card .contentBx a {
   display: inline-block;
   padding: 10px 20px;
   background: #fff;
@@ -245,11 +246,9 @@ body{
   margin-top: 0;
 }
 
-.container .card:hover .contentBx a{
+.container .card:hover .contentBx a {
   opacity: 1;
   transform: translateY(0px);
   transition-delay: 0.75s;
-  
 }
-
 </style>
