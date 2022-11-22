@@ -13,7 +13,6 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState()
   ],
-
   state: {
     allMovieList: null,
     token: null,
@@ -29,7 +28,9 @@ export default new Vuex.Store({
       state.token = token
       router.push({ name: 'home' })
     },
-
+    GET_REVIEWS(state, reviews) {
+      state.reviews = reviews
+    },
     GET_MOVIES(state, movies) {
       state.allMovieList = movies
     },
@@ -68,8 +69,28 @@ export default new Vuex.Store({
           // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
+        .catch((err) => {
+          console.log(err)
+        })
     },
 
+    getReviews(context) {
+      axios({
+        method: 'get',
+        url: `${Django_URL}/community/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          // console.log(res, context)
+          // console.log(res.data)
+          context.commit('GET_REVIEWS', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
 
     getMovies(context) {
       const API_URL = "http://127.0.0.1:8000/movies/order/release_date/"
