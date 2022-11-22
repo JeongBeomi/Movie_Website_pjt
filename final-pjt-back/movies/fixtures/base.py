@@ -29,7 +29,7 @@ class URLMaker:
         return url
 
 
-TMDB_KEY = '6813edbae392c56d5d9971039612fe72'
+TMDB_KEY = ""
 url = URLMaker(TMDB_KEY)
 
 

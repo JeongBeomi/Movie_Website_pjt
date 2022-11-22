@@ -1,16 +1,20 @@
 <template>
-  <div>COMMUNITY</div>
+  <div>
+    <h1>COMMUNITY</h1>
+    <CommunityList />
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'CommunityView',
-  components: {
+import CommunityList from "@/components/CommunityList";
 
+export default {
+  name: "CommunityView",
+  components: {
+    CommunityList,
   },
-}
+};
 </script>
 
 <style>
-
 </style>
