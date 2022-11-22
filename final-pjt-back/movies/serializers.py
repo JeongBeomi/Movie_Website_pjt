@@ -12,7 +12,7 @@ class MovieListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ['title', 'vote_average', 'poster_path', 'backdrop_path', 'release_date', 'genres']
+        fields = ['id', 'title', 'vote_average', 'poster_path', 'backdrop_path', 'release_date', 'genres']
 
 
 
