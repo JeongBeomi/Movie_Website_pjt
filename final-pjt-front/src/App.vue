@@ -14,7 +14,7 @@
         <router-link :to="{ name: 'CommunityView' }">Community</router-link>
       </nav>
     </div>
-    <div>
+    <div class="content">
       <router-view />
     </div>
   </div>
@@ -22,7 +22,11 @@
 
 <script>
 export default {
-  name: "App",
+<<<<<<< HEAD
+  name: "app",
+=======
+  name: 'app',
+>>>>>>> e728cd284e7e7f34dfd0e1a9cbd19de4ab1534d1
   computed: {
     isLogin() {
       return this.$store.getters.isLogin;
