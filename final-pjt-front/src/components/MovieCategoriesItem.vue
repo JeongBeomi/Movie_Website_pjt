@@ -11,24 +11,24 @@
   </div> -->
 
   <div class="container" @click="toMovieDetail(movie.id)">
-    <div class="card mx-auto">
+    <div class="card">
       <div class="imgBx">
         <img :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" />
       </div>
       <div class="contentBx">
-        <h2>{{ movie.title }}</h2>
+        <h3>{{ movie.title }}</h3>
         <div class="size">
+          <h4>평점 :</h4>
+          <span>{{ movie.vote_average }}</span>
+        </div>
+        <!-- <div class="size">
           <h3>평점 :</h3>
           <span>{{ movie.vote_average }}</span>
         </div>
         <div class="size">
           <h3>평점 :</h3>
           <span>{{ movie.vote_average }}</span>
-        </div>
-        <div class="size">
-          <h3>평점 :</h3>
-          <span>{{ movie.vote_average }}</span>
-        </div>
+        </div> -->
         <!-- <div class="color">
         <h3>Color :</h3>
         <span></span>
@@ -72,12 +72,16 @@ body {
 
 .container {
   position: relative;
+  
+  padding: 0px;
+  margin: 4px;
 }
 
 .container .card {
   position: relative;
-  width: 320px;
-  height: 450px;
+  width: 290px;
+  height: 420px;
+  margin: 0px;
   background: #232323;
   border-radius: 20px;
   overflow: hidden;
@@ -90,17 +94,17 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #9bdc28;
-  clip-path: circle(150px at 80% 20%);
+  /* background: #9bdc28; */
+  /* clip-path: circle(150px at 80% 20%); */
   transition: 0.5s ease-in-out;
 }
-
+/* 
 .container .card:hover:before {
   clip-path: circle(300px at 80% -20%);
-}
+} */
 
 .container .card:after {
-  content: "Nike";
+  content: "";
   position: absolute;
   top: 30%;
   left: -20%;
@@ -114,7 +118,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10000;
+  z-index: 3;
   width: 100%;
   height: 220px;
   transition: 0.5s;
@@ -137,17 +141,17 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 0px;
   text-align: center;
   transition: 1s;
-  z-index: 10;
+  z-index: 2;
 }
 
 .container .card:hover .contentBx {
-  height: 210px;
+  height: 100px;
 }
 
-.container .card .contentBx h2 {
+.container .card .contentBx h3 {
   position: relative;
   font-weight: 600;
   letter-spacing: 1px;
@@ -180,8 +184,8 @@ body {
   transition-delay: 0.6s;
 }
 
-.container .card .contentBx .size h3,
-.container .card .contentBx .color h3 {
+.container .card .contentBx .size h4,
+.container .card .contentBx .color h4 {
   color: #fff;
   font-weight: 300;
   font-size: 14px;
