@@ -7,6 +7,8 @@ import MovieDetailView from '../views/MovieDetailView.vue'
 import SignUpView from '@/views/SignUpView'
 import CommunityDetailView from '@/views/CommunityDetailView'
 import CommunityCreateView from '@/views/CommunityCreateView'
+import MyProfileView from '@/views/MyProfileView' 
+
 
 
 Vue.use(VueRouter)
@@ -46,6 +48,11 @@ const routes = [
     path: '/community_create',
     name: 'CommunityCreateView',
     component: CommunityCreateView
+  },
+  {
+    path: '/myprofile',
+    name: 'MyProfileView',
+    component: MyProfileView
   },
 ]
 

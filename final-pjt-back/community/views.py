@@ -2,6 +2,10 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
+
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, get_list_or_404
 
@@ -28,6 +32,7 @@ def review_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'DELETE', 'PUT'])
+@permission_classes([IsAuthenticated])
 def review_detail(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
 
