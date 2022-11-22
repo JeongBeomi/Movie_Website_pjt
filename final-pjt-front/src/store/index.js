@@ -30,8 +30,8 @@ export default new Vuex.Store({
     },
     DELETE_TOKEN(state) {
       state.token = null
-      router.push({ name: 'home' }) .catch(()=>{})
-    },  
+      router.push({ name: 'home' }).catch(() => { })
+    },
     GET_REVIEWS(state, reviews) {
       state.reviews = reviews
     },

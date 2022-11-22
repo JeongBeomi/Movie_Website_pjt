@@ -72,16 +72,52 @@
     <!-- movie -->
     <b-container>
       <b-row>
-        <b-col v-for="movie in movies" :key="movie.id">
-          <MovieCategoriesItem :movie="movie" />
+        <b-col
+          v-for="movie in movies"
+          :key="movie.id"
+          @click="$bvModal.show('modal-scoped')"
+        >
+          <MovieCategoriesItem :movie="movie" @movie-to-modal="movieToModal" />
         </b-col>
       </b-row>
     </b-container>
+
+    <!-- modal detail -->
+    <b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button>
+
+    <b-modal id="modal-scoped">
+      <template #modal-header="{ close }">
+        <!-- Emulate built in modal header close button action -->
+        <b-button size="sm" variant="outline-danger" @click="close()">
+          Close Modal
+        </b-button>
+        <h5>Modal Header</h5>
+      </template>
+
+      <template #default="{ hide }">
+        <p>{{ moviedetail }}</p>
+        <b-button @click="hide()">Hide Modal</b-button>
+      </template>
+
+      <template #modal-footer="{ ok, cancel, hide }">
+        <b>Custom Footer</b>
+        <!-- Emulate built in modal footer ok and cancel button actions -->
+        <b-button size="sm" variant="success" @click="ok()"> OK </b-button>
+        <b-button size="sm" variant="danger" @click="cancel()">
+          Cancel
+        </b-button>
+        <!-- Button with custom close trigger value -->
+        <b-button size="sm" variant="outline-secondary" @click="hide('forget')">
+          Forget it
+        </b-button>
+      </template>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import MovieCategoriesItem from "@/components/MovieCategoriesItem";
+import axios from "axios";
 
 export default {
   name: "MovieCategories",
@@ -91,7 +127,8 @@ export default {
   data() {
     return {
       genre: "Genre",
-    }
+      moviedetail: null,
+    };
   },
   computed: {
     movies() {
@@ -103,12 +140,27 @@ export default {
       this.$store.dispatch("getGenreMovies", genre);
     },
     clickedGenre(event) {
-      this.genre = event.target.textContent
+      this.genre = event.target.textContent;
       this.getGenreMovies(event.target.id);
     },
     orderedBy(event) {
-      this.genre = "Genre"
+      this.genre = "Genre";
       this.$store.dispatch("orderedBy", event.target.value);
+    },
+    movieToModal(movie_id) {
+      const API_URL = `http://127.0.0.1:8000/movies/detail/${movie_id}/`;
+
+      axios({
+        method: "get",
+        url: API_URL,
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.moviedetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   created() {},
