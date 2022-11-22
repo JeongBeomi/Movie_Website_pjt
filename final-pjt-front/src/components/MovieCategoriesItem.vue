@@ -10,7 +10,8 @@
   </div>
   </div> -->
 
-  <div class="container" @click="toMovieDetail(movie.id)">
+  <!--  -->
+  <div class="container" @click="movieToModal">
     <div class="card">
       <div class="imgBx">
         <img :src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path" />
@@ -48,8 +49,11 @@ export default {
     movie: Object,
   },
   methods: {
-    toMovieDetail(movie_id) {
-      this.$router.push({ name: "movieDetail", params: { id: movie_id } });
+    // toMovieDetail(movie_id) {
+    //   this.$router.push({ name: "movieDetail", params: { id: movie_id } });
+    // },
+    movieToModal() {
+      this.$emit("movie-to-modal", this.movie.id);
     },
   },
 };
@@ -72,7 +76,7 @@ body {
 
 .container {
   position: relative;
-  
+
   padding: 0px;
   margin: 4px;
 }

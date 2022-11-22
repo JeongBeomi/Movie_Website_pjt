@@ -5,15 +5,13 @@
       <nav>
         <router-link to="/">Home</router-link>
         <hr />
-        <router-link v-if="isLogin===false" to="/login">Login</router-link>
+        <router-link v-if="isLogin === false" to="/login">Login</router-link>
         <a v-else @click.prevent="logOut">Logout</a>
         <hr />
-        <router-link v-if="isLogin===false" to="/signup">Signup</router-link>
+        <router-link v-if="isLogin === false" to="/signup">Signup</router-link>
         <router-link v-else :to="{ name: 'MyProfileView' }">MyPage</router-link>
         <hr />
-        <router-link :to="{ name: 'CommunityView' }"
-          >Community</router-link
-        >
+        <router-link :to="{ name: 'CommunityView' }">Community</router-link>
       </nav>
     </div>
     <div class="content">
@@ -24,19 +22,18 @@
 
 <script>
 export default {
-  name: 'app',
+  name: "app",
   computed: {
     isLogin() {
-      return this.$store.getters.isLogin
-    }
+      return this.$store.getters.isLogin;
+    },
   },
   methods: {
     logOut() {
-      this.$store.commit('DELETE_TOKEN')      
-    }
+      this.$store.commit("DELETE_TOKEN");
+    },
   },
-
-}
+};
 </script>
 
 <style>

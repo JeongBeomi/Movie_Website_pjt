@@ -3,11 +3,10 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LogInView from '../views/LogInView.vue'
 import CommunityView from '@/views/CommunityView'
-import MovieDetailView from '../views/MovieDetailView.vue'
 import SignUpView from '@/views/SignUpView'
 import CommunityDetailView from '@/views/CommunityDetailView'
 import CommunityCreateView from '@/views/CommunityCreateView'
-import MyProfileView from '@/views/MyProfileView' 
+import MyProfileView from '@/views/MyProfileView'
 
 
 
@@ -33,11 +32,6 @@ const routes = [
     path: '/community',
     name: 'CommunityView',
     component: CommunityView
-  },
-  {
-    path: '/movie_detail/:id',
-    name: 'movieDetail',
-    component: MovieDetailView
   },
   {
     path: '/community_detail/:id',
