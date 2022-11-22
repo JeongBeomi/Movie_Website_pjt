@@ -30,6 +30,10 @@ export default {
       axios({
         method: "get",
         url: `${API_URL}/community/${this.$route.params.id}`,
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
+        }
+
       })
         .then((res) => {
           console.log(res);

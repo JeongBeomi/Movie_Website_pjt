@@ -8,14 +8,17 @@
             <nav>
               <router-link to="/">Home</router-link>
               <hr />
-              <router-link to="/login">Login</router-link>
+              <router-link v-if="isLogin===false" to="/login">Login</router-link>
+              <a v-else @click.prevent="logOut">Logout</a>
               <hr />
-              <router-link to="/signup">Signup</router-link>
+              <router-link v-if="isLogin===false" to="/signup">Signup</router-link>
+              <router-link v-else :to="{ name: 'MyProfileView' }">MyPage</router-link>
               <hr />
               <router-link :to="{ name: 'CommunityView' }"
                 >Community</router-link
               >
             </nav>
+
           </header>
         </b-col>
         <b-col cols="10">
@@ -26,6 +29,22 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  },
+  methods: {
+    logOut() {
+      this.$store.commit('DELETE_TOKEN')      
+    }
+  },
+
+}
+</script>
 
 <style>
 #app {
@@ -69,3 +88,5 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+
+

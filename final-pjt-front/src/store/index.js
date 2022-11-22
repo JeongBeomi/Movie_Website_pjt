@@ -28,6 +28,10 @@ export default new Vuex.Store({
       state.token = token
       router.push({ name: 'home' })
     },
+    DELETE_TOKEN(state) {
+      state.token = null
+      router.push({ name: 'home' }) .catch(()=>{})
+    },  
     GET_REVIEWS(state, reviews) {
       state.reviews = reviews
     },
