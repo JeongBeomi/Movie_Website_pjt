@@ -1,31 +1,25 @@
 <template>
-  <div id="app" class="d-flex flex-nowrap">
-    <b-container class="m-5 p-0">
-      <b-row>
-        <b-col cols="2">
-          <header>
-            logo
-            <nav>
-              <router-link to="/">Home</router-link>
-              <hr />
-              <router-link v-if="isLogin===false" to="/login">Login</router-link>
-              <a v-else @click.prevent="logOut">Logout</a>
-              <hr />
-              <router-link v-if="isLogin===false" to="/signup">Signup</router-link>
-              <router-link v-else :to="{ name: 'MyProfileView' }">MyPage</router-link>
-              <hr />
-              <router-link :to="{ name: 'CommunityView' }"
-                >Community</router-link
-              >
-            </nav>
+  <div id="app">
+    <div class="menu">
+      logo
+      <nav>
+        <router-link to="/">Home</router-link>
+        <hr />
+        <router-link v-if="isLogin===false" to="/login">Login</router-link>
+        <a v-else @click.prevent="logOut">Logout</a>
+        <hr />
+        <router-link v-if="isLogin===false" to="/signup">Signup</router-link>
+        <router-link v-else :to="{ name: 'MyProfileView' }">MyPage</router-link>
+        <hr />
+        <router-link :to="{ name: 'CommunityView' }"
+          >Community</router-link
+        >
+      </nav>
 
-          </header>
-        </b-col>
-        <b-col cols="10">
-          <router-view />
-        </b-col>
-      </b-row>
-    </b-container>
+    </div>
+    <div>
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -86,6 +80,16 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.menu {
+  float: left;
+  width: 10%;
+}
+
+.content {
+  float: left;
+  width: 85%;
 }
 </style>
 
