@@ -4,6 +4,7 @@
     <p>글 번호 : {{ review?.id }}</p>
     <p>제목 : {{ review?.title }}</p>
     <p>내용 : {{ review?.content }}</p>
+    <p>작성자 : {{ review?.username }}</p>
     <p>작성시간 : {{ review?.created_at }}</p>
     <p>수정시간 : {{ review?.updated_at }}</p>
   </div>
@@ -28,7 +29,7 @@ export default {
     getReviewDetail() {
       axios({
         method: "get",
-        url: `${API_URL}/api/v1/articles/${this.$route.params.id}`,
+        url: `${API_URL}/community/${this.$route.params.id}`,
       })
         .then((res) => {
           console.log(res);
