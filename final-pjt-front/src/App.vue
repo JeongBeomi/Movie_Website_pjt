@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="d-flex flex-nowrap">
     <b-container class="m-5 p-0">
       <b-row>
         <b-col cols="2">
