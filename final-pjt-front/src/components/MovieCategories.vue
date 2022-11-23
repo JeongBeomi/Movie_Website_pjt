@@ -86,40 +86,23 @@
     <!-- <b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button> -->
 
     <b-modal id="modal-scoped">
-      <template #modal-header="{  }">
-        <!-- Emulate built in modal header close button action -->
-        <!-- <b-button size="sm" variant="outline-danger" @click="close()">
-          Close Modal
-        </b-button> -->
-        <!-- <iframe width="915" height="512" src="https://www.youtube.com/embed/jD5Yc2qMzBw" title="[블랙 아담] 박스오피스 휩쓸어버린 문제적 히어로" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      <template #modal-header="{}">
         <div class="video">
           <iframe
-            width="1600" height="768"
             :src="detailvideo"
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loop
           ></iframe>
         </div>
       </template>
-      <template #default="{ hide }">
-        
-        <!-- <img :src="'http://image.tmdb.org/t/p/w500/' + backdrop_path" alt=""> -->
-        <p>{{ moviedetail }}</p>
-        <!-- <p>{{ moviedetail }}</p> -->
-
-        <b-button @click="hide()">Hide Modal</b-button>
+      <template>
+        <p>{{ movieDetail.title }}</p>
       </template>
 
-      <template #modal-footer="{ ok, cancel, hide }">
-        <b>Custom Footer</b>
-        <!-- Emulate built in modal footer ok and cancel button actions -->
-        <b-button size="sm" variant="success" @click="ok()"> OK </b-button>
-        <b-button size="sm" variant="danger" @click="cancel()">
-          Cancel
-        </b-button>
-        <!-- Button with custom close trigger value -->
-        <b-button size="sm" variant="outline-secondary" @click="hide('forget')">
-          Forget it
-        </b-button>
+      <template #modal-footer="{ back }">
+        <b-button size="sm" variant="danger" @click="back()"> Back </b-button>
       </template>
     </b-modal>
   </div>
@@ -137,7 +120,7 @@ export default {
   data() {
     return {
       genre: "Genre",
-      moviedetail: null,
+      movieDetail: "",
       backdrop_path: null,
       detailvideo: null,
     };
@@ -160,7 +143,6 @@ export default {
       this.$store.dispatch("orderedBy", event.target.value);
     },
     movieToModal(movie_id) {
-
       axios({
         method: "get",
         url: `http://127.0.0.1:8000/movies/detail/${movie_id}/`,
@@ -168,8 +150,8 @@ export default {
         .then((res) => {
           // console.log(res.data);
           // console.log(typeof(res.data))
-          this.moviedetail = res.data;
-          this.backdrop_path = res.data.backdrop_path
+          this.movieDetail = res.data;
+          this.backdrop_path = res.data.backdrop_path;
         })
         .catch((err) => {
           console.log(err);
@@ -177,15 +159,15 @@ export default {
 
       axios({
         method: "get",
-        url: `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=d1d99f07a889e254f0bdcbf18c0530bb&language=ko-KR`
+        url: `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=d1d99f07a889e254f0bdcbf18c0530bb&language=ko-KR`,
       })
         .then((res) => {
-          console.log(res.data.results[0].key)
-          this.detailvideo = `https://www.youtube.com/embed/${res.data.results[0].key}?rel=0&amp;autoplay=1&mute=1;loop=1`
+          console.log(res.data.results[0].key);
+          this.detailvideo = `https://www.youtube.com/embed/${res.data.results[0].key}?rel=0&amp;autoplay=1&mute=1;loop=1`;
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     },
   },
   created() {},
@@ -229,14 +211,26 @@ div .container {
 }
 
 .modal-content {
-  width: 80%;
+  width: 60%;
   margin: 4px auto;
 }
 
+/* iframe {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url(polina.jpg) no-repeat;
+  background-size: cover;
+} */
+
 iframe {
-  margin: 0;
-  /* width: 1930px;
-  height: 1024px; */
+  width: 100%;
+  height: 100%;
 }
 
 img {
@@ -245,10 +239,12 @@ img {
 
 .modal-header {
   padding: 0px;
+  height: 50%;
 }
 
 .video {
   width: 1930px;
-  height: 1024px;
+  height: 700px;
+  overflow: hidden;
 }
 </style>
