@@ -83,19 +83,29 @@
     </b-container>
 
     <!-- modal detail -->
-    <b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button>
+    <!-- <b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button> -->
 
     <b-modal id="modal-scoped">
-      <template #modal-header="{ close }">
+      <template #modal-header="{  }">
         <!-- Emulate built in modal header close button action -->
-        <b-button size="sm" variant="outline-danger" @click="close()">
+        <!-- <b-button size="sm" variant="outline-danger" @click="close()">
           Close Modal
-        </b-button>
-        <h5>Modal Header</h5>
+        </b-button> -->
+        <!-- <iframe width="915" height="512" src="https://www.youtube.com/embed/jD5Yc2qMzBw" title="[블랙 아담] 박스오피스 휩쓸어버린 문제적 히어로" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <div class="video">
+          <iframe
+            width="1600" height="768"
+            :src="detailvideo"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+          ></iframe>
+        </div>
       </template>
-
       <template #default="{ hide }">
+        
+        <!-- <img :src="'http://image.tmdb.org/t/p/w500/' + backdrop_path" alt=""> -->
         <p>{{ moviedetail }}</p>
+        <!-- <p>{{ moviedetail }}</p> -->
+
         <b-button @click="hide()">Hide Modal</b-button>
       </template>
 
@@ -128,6 +138,8 @@ export default {
     return {
       genre: "Genre",
       moviedetail: null,
+      backdrop_path: null,
+      detailvideo: null,
     };
   },
   computed: {
@@ -148,19 +160,32 @@ export default {
       this.$store.dispatch("orderedBy", event.target.value);
     },
     movieToModal(movie_id) {
-      const API_URL = `http://127.0.0.1:8000/movies/detail/${movie_id}/`;
 
       axios({
         method: "get",
-        url: API_URL,
+        url: `http://127.0.0.1:8000/movies/detail/${movie_id}/`,
       })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
+          // console.log(typeof(res.data))
           this.moviedetail = res.data;
+          this.backdrop_path = res.data.backdrop_path
         })
         .catch((err) => {
           console.log(err);
         });
+
+      axios({
+        method: "get",
+        url: `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=d1d99f07a889e254f0bdcbf18c0530bb&language=ko-KR`
+      })
+        .then((res) => {
+          console.log(res.data.results[0].key)
+          this.detailvideo = `https://www.youtube.com/embed/${res.data.results[0].key}?rel=0&amp;autoplay=1&mute=1;loop=1`
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     },
   },
   created() {},
@@ -189,5 +214,41 @@ div .container {
   width: 290px;
   height: 420px;
   margin: 0px 5px;
+}
+
+.modal-scoped {
+  text-align: center;
+}
+
+.modal {
+  padding: 20px;
+}
+
+.modal-dialog {
+  max-width: none;
+}
+
+.modal-content {
+  width: 80%;
+  margin: 4px auto;
+}
+
+iframe {
+  margin: 0;
+  /* width: 1930px;
+  height: 1024px; */
+}
+
+img {
+  width: 50vw;
+}
+
+.modal-header {
+  padding: 0px;
+}
+
+.video {
+  width: 1930px;
+  height: 1024px;
 }
 </style>
