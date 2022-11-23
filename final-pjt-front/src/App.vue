@@ -15,18 +15,18 @@ export default {
   components: {
     NavBar,
   },
+
   computed: {
     isLogin() {
-      return this.$store.getters.isLogin
-    }
+      return this.$store.getters.isLogin;
+    },
   },
   methods: {
     logOut() {
-      this.$store.commit('DELETE_TOKEN')      
-    }
+      this.$store.commit("DELETE_TOKEN");
+    },
   },
-
-}
+};
 </script>
 
 <style>
