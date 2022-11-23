@@ -1,21 +1,6 @@
 <template>
   <div id="app">
-    <div class="menu">
-      logo
-      <nav>
-        <router-link to="/">Home</router-link>
-        <hr />
-        <router-link v-if="isLogin===false" to="/login">Login</router-link>
-        <a v-else @click.prevent="logOut">Logout</a>
-        <hr />
-        <router-link v-if="isLogin===false" to="/signup">Signup</router-link>
-        <router-link v-else :to="{ name: 'MyProfileView' }">MyPage</router-link>
-        <hr />
-        <router-link :to="{ name: 'CommunityView' }"
-          >Community</router-link
-        >
-      </nav>
-    </div>
+    <NavBar id="nav1"/>
     <div class="content">
       <router-view />
     </div>
@@ -23,8 +8,13 @@
 </template>
 
 <script>
+import NavBar from "@/components/NavBar";
+
 export default {
   name: 'app',
+  components: {
+    NavBar,
+  },
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
@@ -46,6 +36,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 80%;
 }
 
 @keyframes text-pop-up-top {
@@ -89,6 +80,17 @@ nav a.router-link-exact-active {
 .content {
   float: left;
   width: 85%;
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+@import "./assets/css/nav.css";
+
+#nav1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
 }
 </style>
 
