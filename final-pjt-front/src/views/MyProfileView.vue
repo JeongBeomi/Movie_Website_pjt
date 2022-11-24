@@ -1,54 +1,31 @@
 <template>
   <div>
-    <div class="infocardContainer">
-      <div id="main">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Dog_coat_variation.png"
-        />
-      </div>
-      <div id="textbois">
-        <h2>Emil Alicic</h2>
-        <h4>Professional Memeologist</h4>
-        <a href="mailto:limecicila@gmail.com">limecicila@gmail.com</a>
-        <div id="hotlinks">
-          <a href="https://codepen.io/LIMESTA"
-            ><img
-              id="codepenio"
-              src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-Black-Small.png"
-              target="_blank"
-            />
-          </a>
-          <a href="https://codepen.io/LIMESTA">
-            <img
-              id="codepenio"
-              src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-Black-Small.png"
-              target="_blank"
-            />
-          </a>
-          <a href="https://codepen.io/LIMESTA">
-            <img
-              id="codepenio"
-              src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-Black-Small.png"
-              target="_blank"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
     <hr />
-    <h1>profile</h1>
-    <p>{{ myinfo }}</p>
-    <p>{{ myreviews }}</p>
+    <h1>Hello! {{ myinfo.username }} user</h1>
+    <br />
+    <br />
+    <br />
+    <h3>My Review</h3>
+    <ReviewItem
+      v-for="myreview in myreviews"
+      :key="myreview.id"
+      :myreview="myreview"
+    />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ReviewItem from "@/components/ReviewItem";
 
 const Django_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MyProfileView",
+
+  components: {
+    ReviewItem,
+  },
   data() {
     return {
       myinfo: "",
