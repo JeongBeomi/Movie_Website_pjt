@@ -231,12 +231,12 @@
                     title="Sucks big time - 0.5 stars"
                   ></label>
                 </fieldset>
-                <span class="likes">109 likes</span>
+                <!-- <span class="likes">109 likes</span> -->
               </div>
               <!-- end details -->
             </div>
             <!-- end hero -->
-            <div class="description">
+            <!-- <div class="description">
               <div
                 class="column1"
                 v-for="genre in movieDetail.genres"
@@ -244,17 +244,12 @@
               >
                 <span class="tag">{{ genre.name }}</span>
               </div>
-              <!-- end column1 -->
-              <div class="column2">
-                <p>
-                  Bilbo Baggins is swept into a quest to reclaim the lost Dwarf
-                  Kingdom of Erebor from the fearsome dragon Smaug. Approached
-                  out of the blue by the wizard Gandalf the Grey, Bilbo finds
-                  himself joining a company of thirteen dwarves led by the
-                  legendary warrior, Thorin Oakenshield. Their journey will take
-                  them into the Wild; through... <a href="#">read more</a>
-                </p>
-                <!-- <div class="avatars">
+               end column1 -->
+            <!-- <div class="column2"> -->
+            <!-- <p>
+                  {{movieDetail.}} <a href="#">read more</a>
+                </p> -->
+            <!-- <div class="avatars">
                   <a href="#" data-tooltip="Person 1" data-placement="top">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar1.png" alt="avatar1" />
                   </a>
@@ -265,9 +260,9 @@
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar3.png" alt="avatar3" />
                   </a>
                 </div> end avatars -->
-              </div>
-              <!-- end column2 -->
-            </div>
+            <!-- </div> -->
+            <!-- end column2 -->
+            <!-- </div> -->
             <!-- end description -->
           </div>
           <!-- end container -->
