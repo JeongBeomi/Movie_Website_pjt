@@ -71,14 +71,13 @@
     </div>
     <!-- movie -->
     <b-container>
-
       <b-row>
-        <b-col
-          v-for="movie in movies"
-          :key="movie.id"
-        >
+        <b-col v-for="movie in movies" :key="movie.id">
           <label for="popup">
-            <MovieCategoriesItem :movie="movie" @movie-to-modal="movieToModal" />
+            <MovieCategoriesItem
+              :movie="movie"
+              @movie-to-modal="movieToModal"
+            />
           </label>
         </b-col>
       </b-row>
@@ -111,13 +110,13 @@
     </b-modal> -->
 
     <!-- 지리는 딧테일 -->
-    <input type="checkbox" id="popup">
+    <input type="checkbox" id="popup" />
     <div>
       <div>
         <div class="movie-card">
           <div class="container">
             <!-- <a href="#"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_cover.jpg" alt="cover" class="cover" /></a> -->
-              
+
             <div class="hero">
               <iframe
                 :src="detailvideo"
@@ -125,32 +124,136 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
                 loop="10"
-              ></iframe>    
+              ></iframe>
               <div class="details">
                 <div class="title1">{{ movieDetail.title }}</div>
                 <!-- <div class="title2">The Battle of the Five Armies</div>     -->
                 <fieldset class="rating">
-                  <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                  <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                  <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                  <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                  <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                  <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                  <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                  <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                  <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                  <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                  <input
+                    type="radio"
+                    id="star5"
+                    name="rating"
+                    value="5"
+                  /><label
+                    class="full"
+                    for="star5"
+                    title="Awesome - 5 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star4half"
+                    name="rating"
+                    value="4 and a half"
+                  /><label
+                    class="half"
+                    for="star4half"
+                    title="Pretty good - 4.5 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star4"
+                    name="rating"
+                    value="4"
+                    checked
+                  /><label
+                    class="full"
+                    for="star4"
+                    title="Pretty good - 4 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star3half"
+                    name="rating"
+                    value="3 and a half"
+                  /><label
+                    class="half"
+                    for="star3half"
+                    title="Meh - 3.5 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star3"
+                    name="rating"
+                    value="3"
+                  /><label
+                    class="full"
+                    for="star3"
+                    title="Meh - 3 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star2half"
+                    name="rating"
+                    value="2 and a half"
+                  /><label
+                    class="half"
+                    for="star2half"
+                    title="Kinda bad - 2.5 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star2"
+                    name="rating"
+                    value="2"
+                  /><label
+                    class="full"
+                    for="star2"
+                    title="Kinda bad - 2 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star1half"
+                    name="rating"
+                    value="1 and a half"
+                  /><label
+                    class="half"
+                    for="star1half"
+                    title="Meh - 1.5 stars"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="star1"
+                    name="rating"
+                    value="1"
+                  /><label
+                    class="full"
+                    for="star1"
+                    title="Sucks big time - 1 star"
+                  ></label>
+                  <input
+                    type="radio"
+                    id="starhalf"
+                    name="rating"
+                    value="half"
+                  /><label
+                    class="half"
+                    for="starhalf"
+                    title="Sucks big time - 0.5 stars"
+                  ></label>
                 </fieldset>
                 <span class="likes">109 likes</span>
-              </div> <!-- end details -->
-              
-            </div> <!-- end hero -->
+              </div>
+              <!-- end details -->
+            </div>
+            <!-- end hero -->
             <div class="description">
-              <div class="column1" v-for="genre in movieDetail.genres" :key="genre.id">
+              <div
+                class="column1"
+                v-for="genre in movieDetail.genres"
+                :key="genre.id"
+              >
                 <span class="tag">{{ genre.name }}</span>
-              </div> <!-- end column1 -->
+              </div>
+              <!-- end column1 -->
               <div class="column2">
-                <p>Bilbo Baggins is swept into a quest to reclaim the lost Dwarf Kingdom of Erebor from the fearsome dragon Smaug. Approached out of the blue by the wizard Gandalf the Grey, Bilbo finds himself joining a company of thirteen dwarves led by the legendary warrior, Thorin Oakenshield. Their journey will take them into the Wild; through... <a href="#">read more</a></p>
+                <p>
+                  Bilbo Baggins is swept into a quest to reclaim the lost Dwarf
+                  Kingdom of Erebor from the fearsome dragon Smaug. Approached
+                  out of the blue by the wizard Gandalf the Grey, Bilbo finds
+                  himself joining a company of thirteen dwarves led by the
+                  legendary warrior, Thorin Oakenshield. Their journey will take
+                  them into the Wild; through... <a href="#">read more</a>
+                </p>
                 <!-- <div class="avatars">
                   <a href="#" data-tooltip="Person 1" data-placement="top">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar1.png" alt="avatar1" />
@@ -162,14 +265,17 @@
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar3.png" alt="avatar3" />
                   </a>
                 </div> end avatars -->
-              </div> <!-- end column2 -->
-            </div> <!-- end description -->
-          </div> <!-- end container -->
-        </div> <!-- end movie-card -->
+              </div>
+              <!-- end column2 -->
+            </div>
+            <!-- end description -->
+          </div>
+          <!-- end container -->
+        </div>
+        <!-- end movie-card -->
       </div>
       <label for="popup"></label>
     </div>
-    
   </div>
 </template>
 
@@ -306,12 +412,12 @@ iframe {
 }
 
 iframe + div {
-  width: 10
+  width: 10;
 }
 
-img {
+/* img {
   width: 50vw;
-}
+} */
 
 .modal-header {
   padding: 0px;
@@ -325,14 +431,14 @@ img {
 }
 
 /* 지리는 딧테일 */
-input[type=checkbox]{
-    display: none;
-    box-sizing: border-box;
-    padding: 0;
+input[type="checkbox"] {
+  display: none;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 input[id="popup"] {
-  display:none;
+  display: none;
 }
 
 /* modal 창 배경*/
@@ -351,7 +457,7 @@ input[id="popup"] + div {
 }
 
 input[id="popup"]:checked + div {
-  display:block;
+  display: block;
 }
 
 /* modal 창 내용 */
@@ -362,28 +468,25 @@ input[id="popup"] + div > div {
   transform: translate(-50%, -50%);
   width: 70%;
   height: 70%;
-  background: #fff;
+  background: #232323;
   z-index: 2;
 }
 
 input[id="popup"] + div > label {
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background:rgbe(0,0,0,.9);
+  background: rgbe(0, 0, 0, 0.9);
   z-index: 1;
 }
 
 .movie-card .container {
   margin: 0;
 }
-
-
 </style>
 
 <style lang='scss'>
 @import "../assets/css/movieDetail.scss";
-
 </style>
