@@ -4,8 +4,8 @@
       <div class="area"></div>
       <nav class="main-menu">
         <ul class="pos">
-          <li>
-            <router-link to="/">
+          <li @click="movies">
+            <router-link to="/" >
               <i class="fa fa-home fa-2x"></i>                    
               <span class="nav-text">
                 Home
@@ -66,6 +66,9 @@ export default {
   methods: {
     logOut() {
       this.$store.commit('DELETE_TOKEN')      
+    },
+    movies() {
+      this.$store.dispatch("getMovies")
     }
   },
 }  
