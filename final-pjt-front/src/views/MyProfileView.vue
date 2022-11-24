@@ -24,10 +24,10 @@ export default {
     }
   },
   created() {
-    this.getReviews()
+    this.getProfile()
   },
   methods: {
-    getReviews() {
+    getProfile() {
       if (this.isLogin === true) { 
         axios({
           method: 'get',
