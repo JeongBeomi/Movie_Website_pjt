@@ -59,6 +59,10 @@ export default new Vuex.Store({
           console.log("gd")
           context.commit('SAVE_TOKEN', res.data.key)
         })
+        .catch((err) => {
+          console.log(err)
+        })
+
     },
 
     logIn(context, payload) {
