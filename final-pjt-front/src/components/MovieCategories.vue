@@ -461,7 +461,7 @@ input[id="popup"] + div > div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 57%;
+  width: 43%;
   height: 70%;
   background: #232323;
   z-index: 2;
@@ -469,6 +469,8 @@ input[id="popup"] + div > div {
 
 input[id="popup"] + div > label {
   position: absolute;
+  opacity: 0.8;
+  background-color: black;
   top: 0;
   left: 0;
   width: 100%;
