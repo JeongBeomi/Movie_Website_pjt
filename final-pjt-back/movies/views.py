@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from django.shortcuts import render
+from django.db.models import Q
 
 from rest_framework.decorators import api_view
 from .serializers import MovieListSerializer, MovieSerializer
@@ -34,4 +35,15 @@ def movie_detail(request, movie_id):
         movie = Movie.objects.get(pk=movie_id)
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def search_movie(request):
+    if request.method == 'GET':
+        search = request.GET.get("searchword")
+        movies = Movie.objects.filter(Q(title__contains=f"{search}")) 
+        # |Q(overview__contains=f"{search}")
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+        
 

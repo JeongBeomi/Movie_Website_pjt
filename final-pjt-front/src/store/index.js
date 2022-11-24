@@ -40,7 +40,8 @@ export default new Vuex.Store({
     },
     ORDER_BY(state, movies) {
       state.allMovieList = movies
-    }
+    },
+
   },
   actions: {
     signUp(context, payload) {
@@ -143,6 +144,23 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    searchMovie(context, searchword) {
+      console.log(searchword)
+      axios({
+        method: 'get',
+        url: `${Django_URL}/movies/search/`,
+        params: {
+          searchword: searchword,
+        }
+      })
+        .then((res) => {
+          console.log(res)
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })      
+    }
   },
   modules: {
   }

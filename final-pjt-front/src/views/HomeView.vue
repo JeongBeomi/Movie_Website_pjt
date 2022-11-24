@@ -1,6 +1,8 @@
 <template>
   <div>
+    <br>
     <MovieSearch/>
+    <br>
     <!-- <MoviePosters/> -->
     <MovieCategories/>
     <!-- <MovieFavorite/> -->
@@ -34,5 +36,5 @@ export default {
 </script>
 
 <style>
-  
+  @import "../assets/css/login.css";
 </style>
