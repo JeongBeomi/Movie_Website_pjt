@@ -1,138 +1,122 @@
-/*TODO: clean it all up, finish flex, add aesthetics, icons, redefine to be relative to vh-vw, maybe rework v2 variant using scss and frames and real transitions? */
-html body {
-  background-color: black;
-  margin: 0 0 0 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.infocardContainer * {
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-weight: 300;
+body .card_container {
+    /* display: flex; */
+    float: left;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0px 0;
 }
 
-h2 {
-  font-weight: 600;
-  font-style: italic;
-  font-family: "Fira Sans Condensed", sans-serif;
+body .card_container .card {
+    position: relative;
+    min-width: 320px;
+    height: 300px;
+    width: 150px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px;
+    transition: 0.4s;
 }
 
-header {
-  height: 2em;
-  background-color: #111122;
-  margin: 0 0 0 0;
-  padding: auto;
-  font-size: 2em;
-  text-align: center;
-  line-height: 2em;
-  color: white;
+body .card_container .card:nth-child(1) .box .content a {
+    background: #4b0000;
 }
 
-a {
-  text-decoration: none;
+body .card_container .card:nth-child(2) .box .content a {
+    background: #e91e63;
 }
 
-a:visited {
-  color: #555566;
+body .card_container .card:nth-child(3) .box .content a {
+    background: #23c186;
 }
 
-a:hover {
-  text-decoration: underline;
+body .card_container .card .box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px; */
+    background: #2a2b2f;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
-.infocardContainer {
-  display: flex;
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  background: rgb(0, 159, 255);
-  background: linear-gradient(121deg, rgba(255, 255, 255, 0) 13%, rgba(0, 159, 255, 1) 100%);
-  transition: all 500ms ease-in;
-  transition-delay: 1s;
-  margin: auto;
-  margin-top: 100px;
-  --margin-top: 100px;
+body .card_container .card .box:hover {
+    transform: translateY(-50px);
 }
 
-.infocardContainer:hover {
-  width: 500px;
-  border-radius: 100px 10px 100px 100px;
-  transition: all 1s ease-out;
+body .card_container .card .box:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
 }
 
-.infocardContainer div {
-  text-color: white;
-  flex-shrink: 1;
-  width: 100%;
-  --background-color: green;
+body .card_container .card .box .content {
+    padding: 20px;
+    text-align: center;
 }
 
-.infocardContainer div * {
-  display: flex;
-  --flex: inherit;
-  overflow: hidden;
-  text-overflow: hidden;
-  --background-color: yellow;
-  color: white;
-  white-space: nowrap;
-  width: 0;
-  height: auto;
-  transition: all 450ms ease-in;
-  transition-delay: 1s;
+body .card_container .card .box .content h2 {
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.1);
 }
 
-.infocardContainer:hover div * {
-  --background-color: purple;
-  display: flex;
-  visibility: visible;
-  transition: all 1s ease-out;
-  transition-delay: 500ms;
-  width: 100%;
-  height: auto;
+body .card_container .card .box .content h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    z-index: 1;
+    transition: 0.5s;
+    margin-bottom: 15px;
 }
 
-.infocardContainer #main,
-.infocardContainer #main img {
-  --background-color: red;
-  height: 200px;
-  width: 200px;
-  padding-right: 10px;
-  border-radius: 100%;
-  flex-shrink: 0;
-  object-fit: cover;
+body .card_container .card .box .content p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    transition: 0.5s;
 }
 
-.infocardContainer #main img {
-  height: 180px;
-  width: 180px;
-  transition: none;
-  display: float;
-  position: relative;
-  border: 10px solid white;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
+body .card_container .card .box .content a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
 }
 
-.infocardContainer #textbois {
-  position: relative;
+body .card_container .card .box .content a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    background: rgb(68, 0, 0);
+    color: #000;
 }
-
-.infocardContainer #textbois #hotlinks {
-  max-width: 60%;
-  max-height: 30px;
-
-  --background-color: white;
-  position: absolute;
-  bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 13px;
-}
-
-.infocardContainer #textbois #hotlinks * {
-  background-color: white;
-  max-width: 30px;
-  --margin: 0 1px 0 1px;
-  border-radius: 25px;
-}
-
-/*TODO: animate copy main transition style for info*/
-.infocardContainer #textbois #hotlinks *:hover {}
