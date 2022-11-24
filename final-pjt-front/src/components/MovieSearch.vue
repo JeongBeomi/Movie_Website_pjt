@@ -20,7 +20,6 @@ export default {
   methods: {
     searchMovie() {
       const searchword = this.searchword
-      console.log(this.searchword)
       this.$store.dispatch('searchMovie', searchword)
     }
   },
