@@ -1,17 +1,42 @@
 <template>
   <div>
-    <h1>Sign Up Page</h1>
-    <form @submit.prevent="signUp">
-      <label for="username">username : </label>
-      <input type="text" id="username" v-model="username" /><br />
-
-      <label for="password1"> password : </label>
-      <input type="password" id="password1" v-model="password1" /><br />
-
-      <label for="password2"> password confirmation : </label>
-      <input type="password" id="password2" v-model="password2" />
-
-      <input type="submit" value="SignUp" />
+    <form class="form" @submit.prevent="signUp">
+      <div class="title">SIGNUP</div>
+      <div class="subtitle">Welcome! Let's create your account!</div>
+      <div class="input-container ic1">
+        <input
+          id="username"
+          class="input"
+          type="text"
+          v-model="username"
+          placeholder=" "
+        />
+        <div class="cut"></div>
+        <label for="username" class="placeholder">User ID</label>
+      </div>
+      <div class="input-container ic2">
+        <input
+          id="password1"
+          class="input"
+          type="password"
+          v-model="password1"
+          placeholder=" "
+        />
+        <div class="cut"></div>
+        <label for="password1" class="placeholder">password1</label>
+      </div>
+      <div class="input-container ic2">
+        <input
+          id="password2"
+          class="input"
+          type="password"
+          v-model="password2"
+          placeholder=" "
+        />
+        <div class="cut"></div>
+        <label for="password2" class="placeholder">password2</label>
+      </div>
+      <input type="submit" class="submit" value="Submit" />
     </form>
   </div>
 </template>
@@ -24,6 +49,7 @@ export default {
       username: null,
       password1: null,
       password2: null,
+      email: null,
     };
   },
   methods: {
@@ -33,9 +59,6 @@ export default {
       const password2 = this.password2;
 
       const payload = {
-        // username,
-        // password1,
-        // password2,
         username: username,
         password1: password1,
         password2: password2,
