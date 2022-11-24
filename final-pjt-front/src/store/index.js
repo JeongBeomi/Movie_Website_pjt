@@ -163,7 +163,22 @@ export default new Vuex.Store({
         })
         .catch((err) => {
           console.log(err)
-        })      
+        })
+    },
+    getRandomImg(context) {
+      const API_URL = `http://127.0.0.1:8000/movies/order/action/`
+
+      axios({
+        method: 'get',
+        url: API_URL,
+      })
+        .then((res) => {
+          console.log(res.data)
+          context.commit("ORDER_BY", res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   modules: {

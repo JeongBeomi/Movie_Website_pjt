@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar id="nav1"/>
+    <NavBar id="nav1" />
     <div class="content">
       <router-view />
     </div>
@@ -11,7 +11,7 @@
 import NavBar from "@/components/NavBar";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     NavBar,
   },
@@ -39,7 +39,7 @@ export default {
   width: 80%;
   position: absolute;
   top: 0%;
-  left:173px
+  left: 9%;
 }
 
 @keyframes text-pop-up-top {
