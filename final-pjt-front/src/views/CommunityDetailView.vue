@@ -19,7 +19,7 @@ export default {
   name: "CommunityDetailView",
   data() {
     return {
-      review: null,
+      review: "",
     };
   },
   created() {
@@ -31,12 +31,11 @@ export default {
         method: "get",
         url: `${API_URL}/community/${this.$route.params.id}`,
         headers: {
-          Authorization: `Token ${this.$store.state.token}`
-        }
-
+          Authorization: `Token ${this.$store.state.token}`,
+        },
       })
         .then((res) => {
-          console.log(res);
+          console.log(res.data, "view");
           this.review = res.data;
         })
         .catch((err) => {

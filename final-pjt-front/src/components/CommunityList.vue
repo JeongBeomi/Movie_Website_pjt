@@ -1,11 +1,18 @@
 <template>
-  <div>
-    <h1>CommunityList</h1>
-    <CommunityListItem
-      v-for="review in reviews"
-      :key="review.id"
-      :review="review"
-    />
+  <div class="communityList">
+    <!-- <h1>CommunityList</h1> -->
+    <b-container>
+      <b-row>
+        <b-col
+          cols="3"
+          v-for="review in reviews"
+          :key="review.id"
+          id="community"
+        >
+          <CommunityListItem :review="review" />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -26,4 +33,8 @@ export default {
 </script>
 
 <style>
+.communityList {
+  position: absolute;
+  top: 463%;
+}
 </style>
