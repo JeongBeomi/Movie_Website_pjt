@@ -2,7 +2,9 @@
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -37,35 +39,38 @@ a:hover {
 }
 
 .hero {
-  height: 342px;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
-  margin:0;
+  margin: 0;
   position: relative;
   overflow: hidden;
-  z-index:1;
+  z-index: 1;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-    
+
 }
 
-.hero:before {
-  content:'';
-  width:100%; height:100%;
-  position:absolute;
-  overflow: hidden;
-  top:0; left:0;
-  // background:red;
-  // background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
-  z-index:-1;
- 
-  transform: skewY(-2.2deg);
-  transform-origin:0 0;
-  
-  //chrome antialias fix
-  -webkit-backface-visibility: hidden; 
-  
-}
+// .hero:before {
+//   content: '';
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   overflow: hidden;
+//   top: 0;
+//   left: 0;
+//   // background:red;
+//   // background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
+//   z-index: -1;
+
+//   transform: skewY(-2.2deg);
+//   transform-origin: 0 0;
+
+//   //chrome antialias fix
+//   -webkit-backface-visibility: hidden;
+
+// }
 
 .cover {
   position: absolute;
@@ -75,16 +80,20 @@ a:hover {
 }
 
 .details {
-  
+  height: 100%;
   padding: 190px 0 0 280px;
-  
-  
+
+
   .title1 {
     color: white;
     font-size: 44px;
     margin-bottom: 13px;
-    position: relative;
-    
+    position: absolute;
+    right: 2%;
+    bottom: 17%;
+    width: 100%;
+    text-align: right;
+
     span {
       position: absolute;
       top: 3px;
@@ -94,23 +103,23 @@ a:hover {
       color: #544C21;
       font-size: 14px;
       padding: 0px 4px;
-      
+
     }
   }
 
-  .title2 {    
+  .title2 {
     color: #C7C1BA;
-    font-size: 23px;    
+    font-size: 23px;
     font-weight: 300;
     margin-bottom: 15px;
   }
-  
-  
+
+
   .likes {
     margin-left: 24px;
   }
-  
-  
+
+
   .likes:before {
     content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/icon_like.png");
     position: relative;
@@ -121,13 +130,13 @@ a:hover {
 }
 
 .description {
-  
+
   bottom: 0px;
   height: 200px;
   font-size: 16px;
   line-height: 26px;
   color: #B1B0AC;
-  
+
 }
 
 .column1 {
@@ -162,15 +171,15 @@ a:hover {
 
 .avatars {
   margin-top: 23px;
-  
+
   img {
     cursor: pointer;
   }
-  
+
   img:hover {
     opacity: 0.6;
   }
-  
+
   a:hover {
     text-decoration: none;
   }
@@ -178,17 +187,30 @@ a:hover {
 
 //star rating stuff via: https://codepen.io/jamesbarnett/pen/vlpkh/
 
-fieldset, label { margin: 0; padding: 0; }
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
 
 /****** Style Star Rating Widget *****/
 
-.rating { 
+.rating {
   border: none;
   float: left;
+  position: absolute;
+  right: 2.4%;
+  bottom: 10%;
+  width: 61%;
+  height: 3%;
+  font-size: 3rem;
 }
 
-.rating > input { display: none; } 
-.rating > label:before { 
+.rating>input {
+  display: none;
+}
+
+.rating>label:before {
   margin: 5px;
   margin-top: 0;
   font-size: 1em;
@@ -197,38 +219,50 @@ fieldset, label { margin: 0; padding: 0; }
   content: "\f005";
 }
 
-.rating > .half:before { 
+.rating>.half:before {
   content: "\f089";
   position: absolute;
 }
 
-.rating > label { 
-  color: #ddd; 
- float: right; 
+.rating>label {
+  color: #ddd;
+  float: right;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating>input:checked~label,
+/* show gold star when clicked */
+.rating:not(:checked)>label:hover,
+/* hover current star */
+.rating:not(:checked)>label:hover~label {
+  color: #FFD700;
+}
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+/* hover previous stars in list */
+
+.rating>input:checked+label:hover,
+/* hover current star when changing rating */
+.rating>input:checked~label:hover,
+.rating>label:hover~input:checked~label,
+/* lighten current selection */
+.rating>input:checked~label:hover~label {
+  color: #FFED85;
+}
 
 //tooltip stuff via: https://codepen.io/peiche/pen/JaftA
 
 a[data-tooltip] {
   position: relative;
 }
+
 a[data-tooltip]::before,
 a[data-tooltip]::after {
   position: absolute;
   display: none;
   opacity: 0.85;
 }
+
 a[data-tooltip]::before {
   /*
    * using data-tooltip instead of title so we 
@@ -244,6 +278,7 @@ a[data-tooltip]::before {
   white-space: nowrap;
   text-decoration: none;
 }
+
 a[data-tooltip]::after {
   width: 0;
   height: 0;
@@ -264,6 +299,7 @@ a[data-tooltip][data-placement="top"]::before {
   left: 0;
   margin-bottom: 40px;
 }
+
 a[data-tooltip][data-placement="top"]::after {
   border-top-color: #000;
   border-bottom: none;
@@ -271,4 +307,3 @@ a[data-tooltip][data-placement="top"]::after {
   left: 20px;
   margin-bottom: 4px;
 }
-
