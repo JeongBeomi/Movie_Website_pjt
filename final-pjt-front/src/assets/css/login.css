@@ -4,7 +4,10 @@
   box-sizing: border-box;
   height: 500px;
   padding: 20px;
-  width: 320px;
+  width: 440px;
+  position: absolute;
+  top: 200px;
+  left: 30%;
 }
 
 .title {
@@ -66,8 +69,8 @@
   width: 50px;
 }
 
-.input:focus ~ .cut,
-.input:not(:placeholder-shown) ~ .cut {
+.input:focus~.cut,
+.input:not(:placeholder-shown)~.cut {
   transform: translateY(8px);
 }
 
@@ -83,16 +86,16 @@
   top: 20px;
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
   transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
-.input:not(:placeholder-shown) ~ .placeholder {
+.input:not(:placeholder-shown)~.placeholder {
   color: #808097;
 }
 
-.input:focus ~ .placeholder {
+.input:focus~.placeholder {
   color: #dc2f55;
 }
 

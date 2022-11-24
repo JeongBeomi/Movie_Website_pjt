@@ -39,7 +39,7 @@ export default {
   width: 80%;
   position: absolute;
   top: 0%;
-  left: 9%;
+  left: 173px;
 }
 
 @keyframes text-pop-up-top {
@@ -88,7 +88,6 @@ nav a.router-link-exact-active {
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 @import "./assets/css/nav.css";
-/* @import "./assets/css/search.css"; */
 
 #nav1 {
   position: fixed;
