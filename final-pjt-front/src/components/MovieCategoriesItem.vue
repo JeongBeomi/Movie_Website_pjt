@@ -37,6 +37,8 @@
         <span></span>
       </div> -->
         <!-- <a href="#">Buy Now</a> -->
+        <input type="checkbox" id="ex">
+        <label for="id">asdf asd f</label>
       </div>
     </div>
   </div>
