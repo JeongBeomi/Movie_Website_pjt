@@ -325,6 +325,12 @@ img {
 }
 
 /* 지리는 딧테일 */
+input[type=checkbox]{
+    display: none;
+    box-sizing: border-box;
+    padding: 0;
+}
+
 input[id="popup"] {
   display:none;
 }
@@ -368,6 +374,10 @@ input[id="popup"] + div > label {
   height: 100%;
   background:rgbe(0,0,0,.9);
   z-index: 1;
+}
+
+.movie-card .container {
+  margin: 0;
 }
 
 
