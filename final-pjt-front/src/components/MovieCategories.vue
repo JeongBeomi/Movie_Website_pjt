@@ -399,10 +399,10 @@ div .container {
 
 iframe {
   position: absolute;
-  top: -85px;
+  top: 0px;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 100%;
   z-index: 0;
 }
 
@@ -461,7 +461,7 @@ input[id="popup"] + div > div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 57%;
   height: 70%;
   background: #232323;
   z-index: 2;
@@ -478,6 +478,7 @@ input[id="popup"] + div > label {
 }
 
 .movie-card .container {
+  width: 100%;
   margin: 0;
 }
 </style>
