@@ -13,8 +13,6 @@ from .serializers import ReviewListSerializer, ReviewSerializer
 from .models import Review, Comment
 
 
-
-
 # Create your views here.
 @api_view(['GET', 'POST'])
 def review_list(request):
@@ -32,6 +30,7 @@ def review_list(request):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(['GET', 'DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
 def review_detail(request, review_pk):
@@ -40,7 +39,7 @@ def review_detail(request, review_pk):
     if request.method == 'GET':
         serializer = ReviewSerializer(review)
         return Response(serializer.data)
-    
+
     elif request.method == 'DELETE':
         review.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -50,3 +49,12 @@ def review_detail(request, review_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+
+@api_view(['GET', 'POST'])
+def my_review_list(request, user_pk):
+    if request.method == 'GET':
+        reviews = get_list_or_404(Review, user_id=user_pk)
+        serializer = ReviewListSerializer(reviews, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
