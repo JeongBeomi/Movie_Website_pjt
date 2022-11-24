@@ -22,7 +22,9 @@ def sortby(request, keyword):
     if request.method == 'GET':
         if keyword in ['popularity', 'vote_average', 'release_date']:
             # movies = Movie.objects.all().order_by(f'-{keyword}')[0:50]
-            movies = Movie.objects.filter(vote_count__gte=30).order_by(f'-{keyword}')[0:50]
+            movies = Movie.objects.filter(vote_count__gte=30).order_by(f'-{keyword}')[
+                0:50
+            ]
             serializer = MovieListSerializer(movies, many=True)
             return Response(serializer.data)
         else:
@@ -41,9 +43,9 @@ def movie_detail(request, movie_id):
 def search_movie(request):
     if request.method == 'GET':
         search = request.GET.get("searchword")
-        movies = Movie.objects.filter(Q(title__contains=f"{search}")) 
+        movies = Movie.objects.filter(Q(title__contains=f"{search}")).order_by(
+            '-popularity'
+        )[0:50]
         # |Q(overview__contains=f"{search}")
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data)
-        
-
